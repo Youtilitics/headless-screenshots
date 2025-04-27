@@ -61,12 +61,14 @@ https://youtilitics.com/ => index.png: PNG image data, 1280 x 630, 8-bit/color R
 https://youtilitics.com/privacy => privacy.png: PNG image data, 1280 x 630, 8-bit/color RGB, non-interlaced
 https://youtilitics.com/watch/dashboard => watch/dashboard.png: PNG image data, 1280 x 630, 8-bit/color RGB, non-interlaced
 [...]
-
-$ xdg-open opengraph/protocol.html.png  #linux
-$ open opengraph/protocol.html.png      #macos
 ```
 
 Result with `index.png`:
+
+```bash
+$ xdg-open opengraph/protocol.html.png  #linux
+$ open opengraph/protocol.html.png      #macos
+```
 
 ![example with Youtilitics homepage](index.png "Example with Youtilitics homepage")
 
