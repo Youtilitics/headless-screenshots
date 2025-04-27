@@ -1,0 +1,5 @@
+services:
+  browserless:
+    image: ghcr.io/browserless/chromium
+    ports:
+      - 8020:3000
