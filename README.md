@@ -18,7 +18,7 @@
 ### Cron example
 
 ```cron
-0 0 * * *  /opt/screenshots.sh -p /var/www/example.com/public/opengraph https://example.com >/var/log/screenshots.log
+0 0 * * *  /opt/screenshots.sh -p /var/www/example.com/public/opengraph https://example.com >>/var/log/screenshots.log
 ```
 
 #### Use generated images
