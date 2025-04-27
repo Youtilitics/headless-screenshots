@@ -56,12 +56,17 @@ $ ./screenshot.sh -p opengraph https://youtilitics.com
  ✔ browserless Pulled                                                                                                                                                                                                                                     0.8s
 [+] Running 1/1
  ✔ Container headless-screenshots-browserless-1  Running                                                                                                                                                                                                  0.0s
-https://www.sitemaps.org/protocol.html => protocol.html.png: PNG image data, 1280 x 630, 8-bit/color RGB, non-interlaced
+https://youtilitics.com/pr/2024-12-11 => pr/2024-12-11.png: PNG image data, 1280 x 630, 8-bit/color RGB, non-interlaced
+https://youtilitics.com/ => index.png: PNG image data, 1280 x 630, 8-bit/color RGB, non-interlaced
+https://youtilitics.com/privacy => privacy.png: PNG image data, 1280 x 630, 8-bit/color RGB, non-interlaced
+https://youtilitics.com/watch/dashboard => watch/dashboard.png: PNG image data, 1280 x 630, 8-bit/color RGB, non-interlaced
 [...]
 
 $ xdg-open opengraph/protocol.html.png  #linux
 $ open opengraph/protocol.html.png      #macos
 ```
+
+Result with `index.png`:
 
 ![example with Youtilitics homepage](index.png "Example with Youtilitics homepage")
 
