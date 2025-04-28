@@ -66,8 +66,8 @@ https://youtilitics.com/watch/dashboard => watch/dashboard.png: PNG image data, 
 Result with `index.png`:
 
 ```bash
-$ xdg-open opengraph/protocol.html.png  #linux
-$ open opengraph/protocol.html.png      #macos
+$ xdg-open opengraph/index.png  #linux
+$ open opengraph/index.png      #macos
 ```
 
 ![example with Youtilitics homepage](index.png "Example with Youtilitics homepage")
