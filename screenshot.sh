@@ -23,29 +23,31 @@ take_screenshot() {
 
   # Create target directory structure based on the URL path
   mkdir -p "$(dirname "$name")"
+  if [ ! -f "$name" ]; then
+    # Take screenshot
+    echo -n "$url => "
+    curl -s \
+      "http://127.0.0.1:8020/screenshot?blockAds=true&timeout=20000" \
+      -H 'Cache-Control: no-cache'\
+      -H 'Content-Type: application/json' \
+      -d '{
+      "url": "'"$url"'",
+      "options": {
+        "fullPage": true,
+        "type": "png"
+      },
+      "viewport": {
+        "width": '$w',
+        "height": '$h'
+      }
+    }' \
+      --output "$name"
 
-  # Take screenshot
-  echo -n "$url => "
-  curl -s \
-    "http://127.0.0.1:8020/screenshot?blockAds=true&timeout=20000" \
-    -H 'Cache-Control: no-cache'\
-    -H 'Content-Type: application/json' \
-    -d '{
-    "url": "'"$url"'",
-    "options": {
-      "fullPage": true,
-      "type": "png"
-    },
-    "viewport": {
-      "width": '$w',
-      "height": '$h'
-    }
-  }' \
-    --output "$name"
+    # Crop screenshot and make sure it is a valid image
+    $magick "$name" -crop ${w}x${h}+0+0 "$name"
+    file "$name"
+  fi
 
-  # Crop screenshot and make sure it is a valid image
-  $magick "$name" -crop ${w}x${h}+0+0 "$name"
-  file "$name"
   file "$name" | grep -q "PNG image data, $w x $h, 8-bit/color RGB, non-interlaced"
 }
 
