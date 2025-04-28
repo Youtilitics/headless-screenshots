@@ -10,6 +10,16 @@ usage() {
   exit 1
 }
 
+check_screenshot() {
+  name="$1"
+  file "$name" | grep -q "PNG image data, $w x $h, 8-bit/color RGB, non-interlaced"
+  ok=$?
+  if [ $ok != 0 ] && [ -f "$name" ]; then
+    rm "$name"
+  fi
+  return $ok
+}
+
 take_screenshot() {
   url=$1
 
@@ -23,9 +33,12 @@ take_screenshot() {
 
   # Create target directory structure based on the URL path
   mkdir -p "$(dirname "$name")"
-  if [ ! -f "$name" ]; then
+  check_screenshot "$name"
+  echo -n "$url => "
+  if [ -f "$name" ]; then
+    file "$name"
+  else
     # Take screenshot
-    echo -n "$url => "
     curl -s \
       "http://127.0.0.1:8020/screenshot?blockAds=true&timeout=20000" \
       -H 'Cache-Control: no-cache'\
@@ -48,7 +61,7 @@ take_screenshot() {
     file "$name"
   fi
 
-  file "$name" | grep -q "PNG image data, $w x $h, 8-bit/color RGB, non-interlaced"
+  check_screenshot "$name"
 }
 
 try_again() {
